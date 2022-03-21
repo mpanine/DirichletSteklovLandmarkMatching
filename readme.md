@@ -57,7 +57,7 @@ Comments
 --------
 - The script ```shape_matching.m``` shows how to perform shape matching using our method.
 - The scripts ```reproduce_fig_12_step[1-3].mat``` allow to reproduce Fig. 12 left of our paper:
-	- First, clone the Faust remeshed dataset shapes (```vtx_5k``` folder) to the folder ```./data/FAUST/vtx_5k/```
+	- Before launching the scripts, clone the Faust remeshed dataset shapes [(```vtx_5k``` folder)](https://github.com/llorz/SGA18_orientation_BCICP_dataset/tree/master/Dataset/FAUST/vtx_5k) to the folder ```./data/FAUST/vtx_5k/```
 	- ```reproduce_fig_12_step1.mat``` computes the remeshed shapes, wrapped into .mat files;
 	- ```reproduce_fig_12_step2.mat``` computes the geodesic errors on all shapes;
 	- ```reproduce_fig_12_step3.mat``` plots the figure using the computed data.
