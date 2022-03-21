@@ -17,24 +17,59 @@ The main steps involved in our method to map a source shape to a target shape is
 Main Functions
 --------------
 ```matlab
-y = f(x);
+Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,DS_num_eigs,radii_factor,weight_Orthonormality,weight_Proper,weight_Bijectivity,num_LB_eigs,ZO_start,ZO_step);
 
 % Input:
-%	x: input
+%	num_landmarks: number of landmarks to use
+%	NN_type: whether to use our fast approximation or the principled definition ('principled','fast'), 'fast' is our preferred option
+%	InitialGuess: type of initial guess ('normal_derivatives','trivial','landmark_harmonics','conformal_energy'), 'normal_derivatives' is our preferred method
+%	DS_num_eigs: number of Dirichlet-Steklov eigen-functions
+%	radii_factor: size of radius around each landmark
+%	weight_Orthonormality: orthonormality weight
+%	weight_Proper: properness weight
+%	weight_Bijectivity: bijectivity weight
+%	num_LB_eigs: number of Laplace-Beltrami eigenfunctions
+%	ZO_start: ZoomOut refinement start
+%	ZO_step: number of ZoomOut refinement steps
 %
 % Output:
-%   y: output
+%   Steklov_settings: the Settings object used to parameterize our method
+```
+
+```matlab
+Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,DS_num_eigs,radii_factor,weight_Orthonormality,weight_Proper,weight_Bijectivity,num_LB_eigs,ZO_start,ZO_step);
+
+% Input:
+[Src_refined,Tar_refined,fullp2pTarSrc, fullp2pSrcTar,fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = compute_steklov(Src, Src_landmarks, Tar, Tar_landmarks, Steklov_settings);
+% Input:
+%	Src: the source shape structure (see shape_matching.m)
+%	Src_landmarks: the landmarks on the source shape
+%	Tar: the target shape structure (see shape_matching.m)
+%	Tar_landmarks: the landmarks on the target shape
+%	Steklov_settings: the Settings object used to parameterize our method (see function above)
+% Output:
+%	Src_refined: the source shape structured with circular boundaries at the landmarks
+%	Tar_refined: the target shape structured with circular boundaries at the landmarks
+%	fullp2pTarSrc: the p2p map from the original (i.e. before introducing circular boundaries) target shape to the original source shape, before ZoomOut refinement
+%	fullp2pSrcTar: the p2p map from the original (i.e. before introducing circular boundaries) source shape to the original target shape, before ZoomOut refinement
+%	fullp2pTarSrc_ZO: the p2p map from the original (i.e. before introducing circular boundaries) target shape to the original source shape, after ZoomOut refinement
+%	fullp2pSrcTar_ZO: the p2p map from the original (i.e. before introducing circular boundaries) source shape to the original target shape, after ZoomOut refinement
 ```
 
 Comments
 --------
 - The script ```shape_matching.m``` shows how to perform shape matching using our method.
+- The scripts ```reproduce_fig_12_step[1-3].mat``` allow to reproduce Fig. 12 left of our paper:
+	- ```reproduce_fig_12_step1.mat``` computes the remeshed shapes, wrapped into .mat files;
+	- ```reproduce_fig_12_step2.mat``` computes the geodesic errors on all shapes;
+	- ```reproduce_fig_12_step3.mat``` plots the figure using the computed data.
 
 
 Acknowledgments
 ----------------
 - This work was funded by EDF R&D and the ANRT as part of the CIFRE grant 2019/0433.
 - The ```+MESH``` module was developped by [Jing Ren](https://github.com/llorz).
+- The ```gputoolbox``` module was developped by [Alec Jacobson](https://github.com/alecjacobson/gptoolbox).
 
 Citation
 --------

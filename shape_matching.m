@@ -64,12 +64,10 @@ num_LB_eigs,ZO_start,ZO_step);
 %% Compute the landmark radii
 Steklov_settings.landmarks_radii = computeLandmarkRadii(Src, Src_landmarks, Tar, Tar_landmarks, Steklov_settings); %Radii of the disks at the landmarks.
 %% Compute the map
-% profile on
 [Src_refined,Tar_refined,fullp2pTarSrc, ...
 fullp2pSrcTar,fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = ...
 compute_steklov(Src, Src_landmarks, ...
 Tar, Tar_landmarks, Steklov_settings);
-% profile viewer
 %% Visualize the transfer
 visualize.visualize_map_colors(Src.SHAPE,Tar.SHAPE,fullp2pSrcTar_ZO,'IfShowCoverage',false,'OverlayAxis','x');
 title('Shape Matching using Dirichlet-Steklov Eigenfunctions');
