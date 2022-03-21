@@ -28,7 +28,7 @@ y = f(x);
 
 Comments
 --------
-#- The script ```ex00_partial_shape_matching.m``` shows how to perform partial shape matching using our method.
+# - The script ```ex00_partial_shape_matching.m``` shows how to perform partial shape matching using our method.
 # - The script ```ex01_reproduce_fig07.m``` shows how to compute the data used to reproduce the Fig.7 of our paper.
 # - The script ```ex02_reproduce_fig07_plot.m``` plots the Fig.7 of our paper using the data produced with the script ```ex01_reproduce_fig07.m```.
 # - If you have any question/comment about this work, please feel free to contact us: mikhail.panine@usi.ch.
@@ -38,7 +38,7 @@ Acknowledgments
 ----------------
 - This work was funded by EDF R&D and the ANRT as part of the CIFRE grant 2019/0433.
 - The ```+MESH``` module was developped by [Jing Ren](https://github.com/llorz).
-#- The ```bc``` and ```bd``` modules were developped by [Emanuele Rodolà](https://sites.google.com/site/erodola/).
+# - The ```bc``` and ```bd``` modules were developped by [Emanuele Rodolà](https://sites.google.com/site/erodola/).
 
 Citation
 --------
