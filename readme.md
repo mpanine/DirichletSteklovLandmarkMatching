@@ -37,9 +37,6 @@ Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,
 ```
 
 ```matlab
-Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,DS_num_eigs,radii_factor,weight_Orthonormality,weight_Proper,weight_Bijectivity,num_LB_eigs,ZO_start,ZO_step);
-
-% Input:
 [Src_refined,Tar_refined,fullp2pTarSrc, fullp2pSrcTar,fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = compute_steklov(Src, Src_landmarks, Tar, Tar_landmarks, Steklov_settings);
 % Input:
 %	Src: the source shape structure (see shape_matching.m)
@@ -60,6 +57,7 @@ Comments
 --------
 - The script ```shape_matching.m``` shows how to perform shape matching using our method.
 - The scripts ```reproduce_fig_12_step[1-3].mat``` allow to reproduce Fig. 12 left of our paper:
+	- First, clone the Faust remeshed dataset shapes (```vtx_5k``` folder) to the folder ```./data/FAUST/vtx_5k/```
 	- ```reproduce_fig_12_step1.mat``` computes the remeshed shapes, wrapped into .mat files;
 	- ```reproduce_fig_12_step2.mat``` computes the geodesic errors on all shapes;
 	- ```reproduce_fig_12_step3.mat``` plots the figure using the computed data.
