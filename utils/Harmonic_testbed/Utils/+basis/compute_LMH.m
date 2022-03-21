@@ -1,0 +1,33 @@
+function [ BASIS ] = compute_LMH( S, LMH_settings )
+    assert(isa(LMH_settings, 'basis.LMH_Settings'), ...
+    sprintf('LMH_settings has to be of type basis.LMH_Settings. Got %s instead.', ...
+    class(LMH_settings)));
+
+    if ~isfield(S, 'region')
+        throw(MException('COMPUTE_LMHERROR:potentialNotDefined',...
+                         sprintf('A region needs to be defined on the shape %s to allow the computation of the LMH.',...
+                                    S.name)));
+    end
+
+%     W = -2*S.W;
+    R = S.D*sparse(1:S.nv, 1:S.nv, S.region.^2);
+    Phi = S.laplacianBasis.basis;
+
+    [Psi, Gamma] = eigs(...
+        @(x) sherman(x, S.W+LMH_settings.parameters.mu*R, S.D*Phi, LMH_settings.parameters.eta), ...
+        S.nv, ...
+        S.D, ...
+        LMH_settings.parameters.k_local, ...
+        'SM', ...
+        struct('issym',1, 'isreal',1));
+    [Gamma, idx] = sort(diag(Gamma));
+    Psi = Psi(:,idx);
+    
+    MHB_settings = basis.MHB_Settings(LMH_settings.numBasisFun - LMH_settings.parameters.k_local);
+    MHB_BASIS = basis.compute_MHB(S, MHB_settings);
+    
+    BASIS.basis = [MHB_BASIS.basis,Psi];
+    BASIS.basis_inverse = BASIS.basis'*S.A;
+    
+    BASIS.potential = Gamma;
+end

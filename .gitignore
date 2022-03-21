@@ -20,3 +20,11 @@ octave-workspace
 
 # Simulink autosave extension
 .autosave
+
+# output of computations
+output/
+
+# Faust dataset
+data/FAUST/remeshed_mat/
+data/FAUST/Gammas/
+data/FAUST/vtx_5k/
