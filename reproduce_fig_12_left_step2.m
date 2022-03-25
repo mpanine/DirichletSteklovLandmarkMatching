@@ -38,7 +38,7 @@ num_LB_eigs = 120;
 ZO_start = 20;
 ZO_step = 5;
 
-load([data_dir,'lmk_list.mat']);
+load([data_dir,'Landmarks/lmk_list.mat']);
 NUM_LMKS = length(lmk_list);
 
 Steklov_settings = compute_steklov_settings(...
