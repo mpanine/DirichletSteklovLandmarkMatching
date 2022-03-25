@@ -69,6 +69,7 @@ fullp2pSrcTar,fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = ...
 compute_steklov(Src, Src_landmarks, ...
 Tar, Tar_landmarks, Steklov_settings);
 %% Visualize the transfer
+figure;
 visualize.visualize_map_colors(Src.SHAPE,Tar.SHAPE,fullp2pSrcTar_ZO,'IfShowCoverage',false,'OverlayAxis','x');
 title('Shape Matching using Dirichlet-Steklov Eigenfunctions');
 view(0,90);

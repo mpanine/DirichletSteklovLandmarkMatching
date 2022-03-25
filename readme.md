@@ -53,6 +53,13 @@ Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,
 %	fullp2pSrcTar_ZO: the p2p map from the original (i.e. before introducing circular boundaries) source shape to the original target shape, after ZoomOut refinement
 ```
 
+Setup
+-----
+1. Compile the three mex files in ```utils/Harmonic_testbed/Utils/+core/private/```.
+2. Move ```GetMD5.mex``` to ```utils/Harmonic_testbed/Utils/+core/```.
+3. Compile ANN in ```utils/Harmonic_testbed/ann_mwrapper/```.
+
+
 Comments
 --------
 - The script ```shape_matching.m``` shows how to perform shape matching using our method.
@@ -65,9 +72,10 @@ Comments
 
 Acknowledgments
 ----------------
-- This work was funded by EDF R&D and the ANRT as part of the CIFRE grant 2019/0433.
+- Parts of this work were supported by the ERC Starting Grants No. 758800 (EXPROTEA), the ANR AI Chair AIGRETTE, the Swiss National Science Foundation (SNSF) under project number 188577 and the Association Nationale de la Recherche et de la Technologie (ANRT) via the Convention industrielle de formation par la recherche (CIFRE) grant No. 2019/0433.
 - The ```+MESH``` module was developped by [Jing Ren](https://github.com/llorz).
-- The ```gputoolbox``` module was developped by [Alec Jacobson](https://github.com/alecjacobson/gptoolbox).
+- The [```getMD5.m``` script](https://www.mathworks.com/matlabcentral/fileexchange/25921-getmd5) was developped by [Jan](https://fr.mathworks.com/matlabcentral/profile/authors/869888).
+- The ```ANN MATLAB Wrapper``` was developped by Dahua Lin. It is a MATLAB port of the [Approximate Nearest Neighbor Library](http://www.cs.umd.edu/~mount/ANN/).
 
 Citation
 --------

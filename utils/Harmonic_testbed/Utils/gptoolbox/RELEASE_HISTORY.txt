@@ -1,2 +1,0 @@
-0.1.1  Cleaned up organization, removed some useless functions, added external
-       fast marching geodesic distance dependency.
