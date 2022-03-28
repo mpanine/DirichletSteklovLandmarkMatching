@@ -646,7 +646,7 @@ void ArrayCore(MD5_CTX *context, const mxArray *V)
         }
                 
         // Call the M-helper function to be more flexible:
-        ok = mexCallMATLAB(1, Arg, 1, &V, "GetMD5_helper");
+        ok = mexCallMATLAB(1, Arg, 1, const_cast<mxArray**>(&V), "GetMD5_helper");
         if (ok != 0) {
            ERROR("HelperFailed", "Calling GetMD5_helper failed.");
         }
@@ -755,7 +755,7 @@ void ToHex(const uchar_T digest[16], char *output, int LowerCase)
   char *outputEnd, *Fmt;
   const uchar_T *s = digest;
   
-  Fmt = LowerCase ? "%02x" : "%02X";
+  Fmt = const_cast<char*>(LowerCase ? "%02x" : "%02X");
   
   for (outputEnd = output + 32; output < outputEnd; output += 2) {
      sprintf(output, Fmt, *(s++));
