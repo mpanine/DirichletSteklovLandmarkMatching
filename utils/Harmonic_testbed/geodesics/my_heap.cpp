@@ -6,7 +6,7 @@
 #include "y_stand.h"    /* declaration file */
 
 /***************************************************************************/
-/*  Heap := Parent of j is  at j div 2, children of j are at 2j and 2j+1   */
+/*  Heap := Parent of j is  at j div 2, children of j are at 2j _and_ 2j+1   */
 /* Min heap: Parent is always less than its children                       */
 /* the root is at a[1].u, a[0].u is an anchor value                        */
 /***************************************************************************/
@@ -17,7 +17,7 @@
 /***************************************************************************/
 void Heap::init_heap(int Vnum){
 	/* The heap size is at most the number of vertices Vnum, allocate the
-	   heap array and the back pointer array.							   */
+	   heap array _and_ the back pointer array.							   */
     a = (struct heap_element *) malloc(sizeof(struct heap_element) *(Vnum+1));
     BP = (int *) malloc(sizeof(int) *Vnum);
 	
@@ -40,7 +40,7 @@ void Heap::reset(void) {
 
 
 /***************************************************************************/
-/* upheap - gets the number of a vertex and moves it up the heap structure */
+/* upheap - gets the number of a vertex _and_ moves it up the heap structure */
 /* till it is bigger than its father.									   */
 /***************************************************************************/
 void
@@ -49,7 +49,7 @@ Heap::upheap(int k)
 	double          u = a[k].u;	/* current value */
 	int             v = a[k].v;
 
-	while (a[k >> 1].u > u) {	/* While the place was not found move the vertex up */
+	while (a[k >> 1].u > u) {	/* While the place was _not_ found move the vertex up */
 		a[k] = a[k >> 1];
 		BP[a[k].v] = k;	        /* back pointer */
 		k >>= 1;
@@ -60,7 +60,7 @@ Heap::upheap(int k)
 }
 /***************************************************************************/
 /* insert an elemet to the heap structure								   */
-/* v is the number of the vertex to add in the V array and u is its U value*/
+/* v is the number of the vertex to add in the V array _and_ u is its U value*/
 /***************************************************************************/
 void
 Heap::insert(double u, int v)
@@ -73,7 +73,7 @@ Heap::insert(double u, int v)
 }
 
 /***************************************************************************/
-/* downheap - get the number of a vertex in the heap and moves it down the */
+/* downheap - get the number of a vertex in the heap _and_ moves it down the */
 /* heap structure till its two sons are bigger than him.				   */
 /***************************************************************************/
 void
@@ -85,8 +85,8 @@ Heap::downheap(int k)
 	int             v = a[k].v;
 	int             j = k;				/* Moves down the heap, till a place for vertex v is found. */
 
-	while ((j <<= 1) <= N) {			/* While have not reached the button and cont is still true */
-		if (j < N and a[j].u > a[j + 1].u) /* If the brother of j is smaller, move j to the brother.*/
+	while ((j <<= 1) <= N) {			/* While have _not_ reached the button _and_ cont is still true */
+		if (j < N _and_ a[j].u > a[j + 1].u) /* If the brother of j is smaller, move j to the brother.*/
 			j++;
 		if (u <= a[j].u)				/* If vertex k is smaller than vertex j end search.			*/
 			break;
@@ -107,7 +107,7 @@ Heap::downheap(int k)
 void
 Heap::remove_top()
 {
-	BP[a[1].v] = Alive;	/* set back pointer to Alive (not in list)  */
+	BP[a[1].v] = Alive;	/* set back pointer to Alive (_not_ in list)  */
 	a[1] = a[N];		/* Move the last vertex to be the first     */
 	BP[a[1].v] = 1;		/* back pointer								*/
 	N--;
