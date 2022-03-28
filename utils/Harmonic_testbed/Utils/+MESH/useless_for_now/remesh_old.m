@@ -34,9 +34,9 @@ if isfield(S1,'name')
     end
 end
 % Nearest neighbor map: old-to-new
-f_o2n = knnsearch(S.surface.VERT,S1.surface.VERT);
+f_o2n = knn(S.surface.VERT,S1.surface.VERT);%knnsearch(S.surface.VERT,S1.surface.VERT);
 % new-to-old
-f_n2o = knnsearch(S1.surface.VERT,S.surface.VERT);
+f_n2o = knn(S1.surface.VERT,S.surface.VERT);%knnsearch(S1.surface.VERT,S.surface.VERT);
 
 if nargin > 2
     S = compute_laplacian_basis(S,num_Eigs);

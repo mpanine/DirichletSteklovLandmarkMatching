@@ -23,8 +23,8 @@ if isfield(S1,'name')
     end
 end
 
-f_c2s = knnsearch(S.surface.VERT,S1.surface.VERT);
-f_s2c = knnsearch(S1.surface.VERT,S.surface.VERT);
+f_c2s = knn(S.surface.VERT,S1.surface.VERT);%knnsearch(S.surface.VERT,S1.surface.VERT);
+f_s2c = knn(S1.surface.VERT,S.surface.VERT);%knnsearch(S1.surface.VERT,S.surface.VERT);
 % figure;
 % subplot(1,2,1); visualize_map_colors_with_coverage(S,S1,f_s2c); title('Simplified to Complete')
 % subplot(1,2,2); visualize_map_colors_with_coverage(S1,S,f_c2s); title('Complete to Simplified')

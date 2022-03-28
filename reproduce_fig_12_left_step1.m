@@ -60,8 +60,8 @@ for shape_id=1:size(all_shapes,2)
         shape_re.name = [shape_name,sprintf('_re%.2f',r)];
         SHAPE_re = shape.compute(shape_re,shape_settings,cache_settings);
 
-        landmarks_re = knnsearch(SHAPE_re.surface.VERT,SHAPE.surface.VERT(landmarks,:));
-        reverse_corres = knnsearch(SHAPE.surface.VERT,SHAPE_re.surface.VERT); % to get the vertex id of the full shape corresponding to the remeshed shape (used to extract reduced Gamma)
+        landmarks_re = knn(SHAPE_re.surface.VERT,SHAPE.surface.VERT(landmarks,:));%knnsearch(SHAPE_re.surface.VERT,SHAPE.surface.VERT(landmarks,:));
+        reverse_corres = knn(SHAPE.surface.VERT,SHAPE_re.surface.VERT);%knnsearch(SHAPE.surface.VERT,SHAPE_re.surface.VERT); % to get the vertex id of the full shape corresponding to the remeshed shape (used to extract reduced Gamma)
         Gamma_re = Gamma(reverse_corres,reverse_corres);
 
         save_struct = struct;

@@ -59,6 +59,8 @@ Setup
 2. Move ```GetMD5.mex``` to ```utils/Harmonic_testbed/Utils/+core/```.
 3. Compile ANN in ```utils/Harmonic_testbed/ann_mwrapper/```.
 
+We tested our setup on Matlab R2018a.
+
 
 Comments
 --------

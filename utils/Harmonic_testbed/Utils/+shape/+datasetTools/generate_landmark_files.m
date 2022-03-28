@@ -196,7 +196,7 @@ function [ output_args ] = generate_landmark_files( dataset, datasetDir, saveDir
             
             
             save([saveDir,dataset,'/Landmarks/',mesh_name,'.mat'],'landmarks');
-            landmarks_ref = knnsearch(sampling_vert_idx, landmarks);
+            landmarks_ref = knn(sampling_vert_idx, landmarks);%knnsearch(sampling_vert_idx, landmarks);
             clear landmarks;
             
             
