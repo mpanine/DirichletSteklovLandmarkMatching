@@ -1,4 +1,4 @@
-function [Shape_refined, segment_TRIV, Steklov_evecs, Steklov_evals, boundary_edges_old, boundary_old] = ComputePrincipledSteklovAll_clean_v2(Shape, landmarks, Steklov_settings)
+function [Shape_refined, segment_TRIV, Steklov_evecs, Steklov_evals, boundary_edges_old, boundary_old] = ComputePrincipledSteklovAll(Shape, landmarks, Steklov_settings)
 %Computes the both the Steklov and Dirichlet-Steklov bases for a given shape and landmarks with small circles of radius radii at the landmarks.
 %Shape: shape structure (MeshInfo output)
 %landmarks: indices of the landmarks

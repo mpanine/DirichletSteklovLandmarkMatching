@@ -1,4 +1,4 @@
-function [fullp2pTarSrc, fullp2pSrcTar] = Principled_findFullP2P_ZO_clean_v2(Src_refined, Src_landmarks, Tar_refined, Tar_landmarks, fullp2pTarSrc, fullp2pSrcTar, Steklov_settings)
+function [fullp2pTarSrc, fullp2pSrcTar] = Principled_findFullP2P_ZO(Src_refined, Src_landmarks, Tar_refined, Tar_landmarks, fullp2pTarSrc, fullp2pSrcTar, Steklov_settings)
 %Principled_findFullP2P_ZO_clean_v2: Improves the previous guess of p2p map
 %by a ZoomOut prodecure on the Laplace-Betrami portion of the basis.
 

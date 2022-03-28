@@ -3,11 +3,11 @@ function [Src_refined,Tar_refined,fullp2pTarSrc, fullp2pSrcTar,fullp2pTarSrc_ZO,
 %   Detailed explanation goes here
 
     %% Refine Shapes (landmark circles) and compute all relevant bases
-    Src_refined = ComputePrincipledSteklovAll_clean_v2(Src, Src_landmarks, Steklov_settings);
-    Tar_refined = ComputePrincipledSteklovAll_clean_v2(Tar, Tar_landmarks, Steklov_settings);
+    Src_refined = ComputePrincipledSteklovAll(Src, Src_landmarks, Steklov_settings);
+    Tar_refined = ComputePrincipledSteklovAll(Tar, Tar_landmarks, Steklov_settings);
 
     %% Compute the boundary correspondence -- Mutltiple methods available
-    fprintf('refinement done\n');
+    %fprintf('refinement done\n');
 
     switch Steklov_settings.InitialGuess
 
@@ -18,10 +18,10 @@ function [Src_refined,Tar_refined,fullp2pTarSrc, fullp2pSrcTar,fullp2pTarSrc_ZO,
             [fullp2pTarSrc, fullp2pSrcTar] = PrincipledLandmarkHarmonicInitialGuess(Src_refined,  Tar_refined);
 
         case 'normal_derivatives' %Normal derivatives of landmark harmonics.
-            [fullp2pTarSrc, fullp2pSrcTar] = PrincipledSteklovBoundaryMatch_clean_v3(Src_refined,  Tar_refined, Steklov_settings);
+            [fullp2pTarSrc, fullp2pSrcTar] = PrincipledSteklovBoundaryMatch_normal_derivatives(Src_refined,  Tar_refined, Steklov_settings);
 
         case 'conformal_energy'
-            [fullp2pTarSrc, fullp2pSrcTar] = PrincipledSteklovBoundaryMatch_clean_v2(Src_refined,  Tar_refined, Steklov_settings);
+            [fullp2pTarSrc, fullp2pSrcTar] = PrincipledSteklovBoundaryMatch_conformal_energy(Src_refined,  Tar_refined, Steklov_settings);
 
     end
 
@@ -30,6 +30,6 @@ function [Src_refined,Tar_refined,fullp2pTarSrc, fullp2pSrcTar,fullp2pTarSrc_ZO,
 
     %% ZoomOut Procedure -- Produces the desired output
 
-    [fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = Principled_findFullP2P_ZO_clean_v2(Src_refined, Src_landmarks, Tar_refined, Tar_landmarks, fullp2pTarSrc, fullp2pSrcTar, Steklov_settings);
+    [fullp2pTarSrc_ZO, fullp2pSrcTar_ZO] = Principled_findFullP2P_ZO(Src_refined, Src_landmarks, Tar_refined, Tar_landmarks, fullp2pTarSrc, fullp2pSrcTar, Steklov_settings);
 end
 
