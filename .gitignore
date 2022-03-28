@@ -3,6 +3,9 @@
 ## We have git for backups!
 ##---------------------------------------------------
 
+# Compiled MEX binaries (all platforms)
+*.mex*
+
 # Windows default autosave extension
 *.asv
 
