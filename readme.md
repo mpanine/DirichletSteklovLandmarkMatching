@@ -53,13 +53,17 @@ Steklov_settings = compute_steklov_settings(num_landmarks, NN_type,InitialGuess,
 %	fullp2pSrcTar_ZO: the p2p map from the original (i.e. before introducing circular boundaries) source shape to the original target shape, after ZoomOut refinement
 ```
 
+
+Configuration
+-------------
+We tested our setup on Windows 10, with Matlab R2018a. The mex files were compiled using MinGW64.
+
+
 Setup
 -----
 1. Compile the three mex files in ```utils/Harmonic_testbed/Utils/+core/private/```.
 2. Move ```GetMD5.mex``` to ```utils/Harmonic_testbed/Utils/+core/```.
 3. Compile ANN in ```utils/Harmonic_testbed/ann_mwrapper/```.
-
-We tested our setup on Matlab R2018a.
 
 
 Comments
